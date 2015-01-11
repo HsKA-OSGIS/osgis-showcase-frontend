@@ -1,0 +1,2 @@
+include *.txt *.ini *.cfg
+recursive-include osgis *.ico *.png *.css *.gif *.jpg *.txt *.js *.html *.xml
