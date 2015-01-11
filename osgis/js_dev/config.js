@@ -17,7 +17,7 @@ OSGIS.globals = {
   search_url : "",
   get_url : "",
   apiitem_url : "",
-  nominatim_url : "",
+  nominatim_url : "http://nominatim.openstreetmap.org/search",
   minyear : 1,
   maxyear : 2011,
   ddb_arrow : "img/ddb-arrow.png",
