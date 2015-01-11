@@ -17,15 +17,15 @@ $(function() {
     $("#nominatimresultlist").on( 'click', ".nominatim-listitem", function() {
         var lat = $(this)[0].attributes.getNamedItem('lat').nodeValue;
         var lon = $(this)[0].attributes.getNamedItem('lon').nodeValue;
-        DDB.map.setCenter(
+        OSGIS.map.setCenter(
            new OpenLayers.LonLat( lon, lat).transform(
               new OpenLayers.Projection("EPSG:4326"),
-              DDB.map.getProjectionObject()
+              OSGIS.map.getProjectionObject()
            ), 13);
         $("#nominatimresultlist").slideUp();
     });
     $("#search-places").click(function () {
-        var geoCodeURL = DDB.globals['nominatim_url']
+        var geoCodeURL = OSGIS.globals['nominatim_url']
         var query = $('#nominatiminput').prop('value');
         $('#ajax-loader').fadeIn(50);
         $.ajax({
