@@ -1,0 +1,13 @@
+#nominatimresultlist {
+    list-style-type: None;
+    padding: 0 5px;
+}
+#nominatimresultlist li {
+    border-bottom: 1px solid red;
+    cursor:pointer;
+    cursor:hand;
+}
+
+#ajax-loader {
+    display:none;
+}

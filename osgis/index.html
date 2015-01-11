@@ -1,0 +1,154 @@
+<!--!
+# Copyright 2014 in medias res Gesellschaft fuer Informationstechnologie mbH
+# The ddb project licenses this file to you under the Apache License,
+# version 2.0 (the "License"); you may not use this file except in compliance
+# with the License. You may obtain a copy of the License at:
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OSGIS MAP Showcase</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="lib/jquery/jquery.1.11.min.js"></script>
+    <script type="text/javascript"
+            src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
+    <script src="js_dev/init_namespace.js"></script>
+    <script type="text/javascript" src="js_dev/config.js"></script>
+    <script type="text/javascript" src="lib/ol/OpenLayers.debug.js"></script>
+    <script type="text/javascript" src="js_dev/framed_ddb.js"></script>
+    <script type="text/javascript" src="js_dev/nominatim_controller.js"></script>
+    <script type="text/javascript" src="js_dev/map.js"></script>
+    <script type="text/javascript" src="js_dev/panel.js"></script>
+    <script type="text/javascript" src="js_dev/main.js"></script>
+    <script type="text/javascript" src="js_dev/nominatim_autocomplete.js"></script>
+    <script type="text/javascript" src="js_dev/ddbsearch.js"></script>
+
+    <link rel="stylesheet"
+          href="lib/ol/theme/default/style.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="lib/jquery-ui-1.10.3/css/start-new/jquery-ui-1.10.3.custom.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="css/map.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="css/sidebar.css"
+          type="text/css"/>
+    <style type="text/css">
+        @font-face {
+            font-family: 'ddb';
+            src: "font.eot"');
+            src: local('☺'),
+            url("fonts/font.woff") format('woff'),
+            url("fonts/font.ttf") format('truetype'),
+            url("fonts/font.svg") format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="panel">
+        <div id="panel_content">
+            <div id="tabs">
+                <span style="margin-left:14px;"><img src="img/ddblogo.png" width="287" height="49" alt="DDB Logo" /></span>
+                <div id="tabs-map">
+                    <div id="accordion_map" class="accordion">
+                        <h3>Suche</h3>
+                        <div class="button-list">
+                            <div id="nominatimsearch" class="button-list">
+                                <form id="search_form">
+                                <table>
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input id="nominatiminput" type="text" placeholder="Wo?"/></td>
+                                        <td>
+                                            <img height="20px" id="search-places" src="img/search.png"/>
+                                        </td>
+                                        <td>
+                                            <img height="20px" id="help-places" src="img/help.png" title="Ortsuche, sucht einen geografischen Ort mit dieser Bezeichnung. Bietet im Erfolgsfall eine Auswahlliste, um zu dem jeweilige Ort auf der Karte zu zoomen."/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <ul id="nominatimresultlist" style="display:none;">
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="apisearchinput" type="text" placeholder="Was?" />
+                                        </td>
+                                        <td>
+                                            <img height="20px" id="search-things" src="img/search.png"/>
+                                        </td>
+                                        <td>
+                                            <img height="20px" id="help-things" src="img/help.png" title="Stichwortsuche, schränkt den Umfang des Suchergebnisses auf diese Stichworte ein. Eine leere Suchanfrage findet alle Objekte im ausgewählten Bereich."/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <label for="amount">Erbaut im Jahr:</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <input type="text" id="amount" style="border:0; color:#a5003b; font-weight:bold;" />
+                                            <div id="slider-range"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="apisearchfiltercheck">Zeige alle Einträge</label>
+                                        </td>
+                                        <td>
+                                            <input id="apisearchfiltercheck" type="checkbox" name="filtercheckbox"/>
+                                        </td>
+                                        <td>
+                                            <img height="20px" id="help-filter" src="img/help.png" title="Filterfunktion, schränkt die Ergebnisse auf einen bestimmten Erbauungszeitraum ein. Mit der Checkbox 'Zeige alle Einträge' wird die Filterung deaktiviert."/>
+                                        </td>
+                                    </tr>
+                                   </tbody>
+                                </table>
+                                </form>
+                            </div>
+                            <div id="ajax-loader">
+                                <img src="img/ajax-loader.gif" alt="AJAX Loading Gif" />
+                            </div>
+
+                        </div>
+                        <h3>Impressum</h3>
+                        <div>
+                            Sie finden unser Impressum unter folgendem Link: <br /><a href="http://www.webgis.de/impressum">http://www.webgis.de/impressum</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="panel_switch">
+        <div id="panel_switch_symbol"></div>
+    </div>
+    <div id="overview_switch">
+        <div id="overview_switch_symbol"></div>
+    </div>
+    <div id="overview">
+        <div id="overview-map"></div>
+    </div>
+
+    <div id="map" class="olMap"></div>
+</body>
+</html>
